@@ -77,7 +77,7 @@ const ChallengeItem: React.FC<ChallengeItemProps> = ({ challenge, onUpdate, onDe
         {challenge.frequencies.map((chip: any) => (
           <div key={chip.id} className="relative">
             <button
-              className={`px-3 py-1 text-xs rounded-full cursor-pointer border`}
+              className={`px-3 py-1 text-xs rounded-full cursor-pointer border bg-[#121212] text-[#E0E0E0]`}
               style={{
                 backgroundColor:
                   chip.status === "Completed"
@@ -91,7 +91,7 @@ const ChallengeItem: React.FC<ChallengeItemProps> = ({ challenge, onUpdate, onDe
               {chip.name}
             </button>
             <select
-              className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
+              className="absolute inset-0 opacity-0 w-full h-full cursor-pointer bg-[#121212] text-[#E0E0E0]"
               value={chip.status}
               onChange={(e) => updateChipStatus(chip.id, e.target.value as "Completed" | "Missed")}
             >
