@@ -57,9 +57,8 @@ const ChallengeItem: React.FC<ChallengeItemProps> = ({ challenge, onUpdate, onDe
         <h3 className="text-lg font-bold">{challenge.title}</h3>
         {/* Status Dot */}
         <div
-          className={`w-4 h-4 rounded-full cursor-pointer transition-all duration-300 ${
-            challenge.status === "Active" ? "bg-green-500" : "bg-blue-500"
-          }`}
+          className={`w-4 h-4 rounded-full cursor-pointer transition-all duration-300 ${challenge.status === "Active" ? "bg-green-500" : "bg-blue-500"
+            }`}
           onClick={toggleChallengeStatus}
           title="Toggle status"
         ></div>
@@ -75,66 +74,62 @@ const ChallengeItem: React.FC<ChallengeItemProps> = ({ challenge, onUpdate, onDe
 
       {/* Scrollable Frequency Chips */}
       <div className="flex gap-2 mt-2 overflow-x-auto max-w-full scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 p-1">
-  {challenge.frequencies.map((chip: any) => (
-    <div key={chip.id} className="relative">
-      <button
-        className={`px-3 py-1 text-xs rounded-full cursor-pointer border`}
-        style={{
-          backgroundColor:
-            chip.status === "Completed"
-              ? "#22c55e" // Green
-              : chip.status === "Missed"
-              ? "#ef4444" // Red
-              : "#d1d5db", // Gray
-          color: chip.status !== "Pending" ? "white" : "black",
-        }}
-      >
-        {chip.name}
-      </button>
-      <select
-        className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
-        value={chip.status}
-        onChange={(e) => updateChipStatus(chip.id, e.target.value as "Completed" | "Missed")}
-      >
-         <option value="Pending">Pending</option>
-        <option value="Completed">Completed</option>
-        <option value="Missed">Missed</option>
-      </select>
-    </div>
-  ))}
-</div>
-
-
-
-
+        {challenge.frequencies.map((chip: any) => (
+          <div key={chip.id} className="relative">
+            <button
+              className={`px-3 py-1 text-xs rounded-full cursor-pointer border`}
+              style={{
+                backgroundColor:
+                  chip.status === "Completed"
+                    ? "#22c55e" // Green
+                    : chip.status === "Missed"
+                      ? "#ef4444" // Red
+                      : "#d1d5db", // Gray
+                color: chip.status !== "Pending" ? "white" : "black",
+              }}
+            >
+              {chip.name}
+            </button>
+            <select
+              className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
+              value={chip.status}
+              onChange={(e) => updateChipStatus(chip.id, e.target.value as "Completed" | "Missed")}
+            >
+              <option value="Pending">Pending</option>
+              <option value="Completed">Completed</option>
+              <option value="Missed">Missed</option>
+            </select>
+          </div>
+        ))}
+      </div>
 
 
       {/* Progress Bar */}
       <div className="w-full bg-gray-300 h-4 rounded-lg mt-3 relative flex overflow-hidden">
-  {completedPercentage > 0 && (
-    <div
-      className="h-full bg-green-500"
-      style={{
-        width: `${completedPercentage}%`,
-        borderTopLeftRadius: "0.5rem",
-        borderBottomLeftRadius: "0.5rem",
-      }}
-    ></div>
-  )}
-  {missedPercentage > 0 && (
-    <div className="h-full bg-red-500" style={{ width: `${missedPercentage}%` }}></div>
-  )}
-  {pendingPercentage > 0 && (
-    <div
-      className="h-full bg-gray-400"
-      style={{
-        width: `${pendingPercentage}%`,
-        borderTopRightRadius: "0.5rem",
-        borderBottomRightRadius: "0.5rem",
-      }}
-    ></div>
-  )}
-</div>
+        {completedPercentage > 0 && (
+          <div
+            className="h-full bg-green-500"
+            style={{
+              width: `${completedPercentage}%`,
+              borderTopLeftRadius: "0.5rem",
+              borderBottomLeftRadius: "0.5rem",
+            }}
+          ></div>
+        )}
+        {missedPercentage > 0 && (
+          <div className="h-full bg-red-500" style={{ width: `${missedPercentage}%` }}></div>
+        )}
+        {pendingPercentage > 0 && (
+          <div
+            className="h-full bg-gray-400"
+            style={{
+              width: `${pendingPercentage}%`,
+              borderTopRightRadius: "0.5rem",
+              borderBottomRightRadius: "0.5rem",
+            }}
+          ></div>
+        )}
+      </div>
 
 
       {/* Actions */}
